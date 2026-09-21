@@ -27,14 +27,19 @@ const compareByService = (a, b) => {
   return compareStrings(a.compose.service, b.compose.service);
 };
 
-export const getComposeCommandParams = (compose) => [
-  "-f",
-  `${compose.configFiles}`,
-  "--project-directory",
-  `${compose.workingDir}`,
-  "-p",
-  `${compose.project}`,
-];
+export const getComposeCommandParams = (compose) => {
+  const firstConfigFile = compose.configFiles.includes(",")
+    ? compose.configFiles.split(",")[0].trim()
+    : compose.configFiles.trim();
+  return [
+    "-f",
+    `${firstConfigFile}`,
+    "--project-directory",
+    `${compose.workingDir}`,
+    "-p",
+    `${compose.project}`,
+  ]
+};
 
 export const getComposeLabel = (compose) => compose.project;
 

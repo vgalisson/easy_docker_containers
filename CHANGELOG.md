@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. _(The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).)_
 
+## [35] - 2026-09-21
+
+### Fixed
+
+- Use only the first entry of `com.docker.compose.project.config_files` when resolving a Dev Container's compose file, so the user's real project file is read instead of the transient override files appended by the Dev Container CLI.
+- Stop logging an error when a Dev Container's temporary compose override file has already been deleted from `/tmp`; a missing file is now treated as expected.
+
 ## [34] - 2026-07-08
 
 ### Added
